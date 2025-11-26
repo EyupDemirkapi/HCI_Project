@@ -113,7 +113,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 physics_interpolation_mode = 2
 position = Vector2(0, -16)
 disable_mode = 2
@@ -126,3 +126,6 @@ debug_color = Color(0.801318, 0.26409635, 0.8125065, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dd465")
+autoplay = "default"
+frame = 4
+frame_progress = 0.80189896
