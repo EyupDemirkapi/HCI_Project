@@ -45,5 +45,17 @@ func _physics_process(delta: float) -> void:
 			moved = 0
 			startingposition = position
 			t = 0.0
+			
+	#animasyon
+	if jumped == 0 and moved == 0 and is_on_floor():
+		if ($AnimatedSprite2D.animation == "walk" and $AnimatedSprite2D.animation_finished) or $AnimatedSprite2D.animation != "walk":
+			$AnimatedSprite2D.play("idle")
+	elif jumped != 0:
+		if moved != 0:
+			$AnimatedSprite2D.play("walk")
+		elif ($AnimatedSprite2D.animation == "walk" and $AnimatedSprite2D.animation_finished) or $AnimatedSprite2D.animation != "walk":
+			$AnimatedSprite2D.play("idle") #burada jump animasyonu olacak
+	elif moved != 0:
+			$AnimatedSprite2D.play("walk")
 
 	move_and_slide()
