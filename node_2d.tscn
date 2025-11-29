@@ -11,7 +11,6 @@ position = Vector2(-112, 112)
 scale = Vector2(6.7858143, 1.766613)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_wtcfe")]
-position = Vector2(-113, 112)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

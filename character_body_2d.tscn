@@ -115,7 +115,6 @@ animations = [{
 
 [node name="player" type="CharacterBody2D"]
 physics_interpolation_mode = 2
-position = Vector2(0, -16)
 disable_mode = 2
 up_direction = Vector2(0.099503726, -0.9950372)
 script = ExtResource("1_ij6vw")
