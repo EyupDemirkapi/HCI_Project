@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfm46jyc6gku2"]
+[gd_scene load_steps=9 format=3 uid="uid://bfm46jyc6gku2"]
 
-[ext_resource type="PackedScene" uid="uid://b3gfvdnqrfvf6" path="res://character_body_2d.tscn" id="1_wtcfe"]
-[ext_resource type="Texture2D" uid="uid://b4aei3sqpcmow" path="res://Sprites/castletileset.png" id="2_0e48y"]
-[ext_resource type="Texture2D" uid="uid://bibmvx1u74q4q" path="res://Sprites/içkale zemin.png" id="3_epypp"]
+[ext_resource type="PackedScene" uid="uid://b3gfvdnqrfvf6" path="res://Scenes/Player.tscn" id="1_kldst"]
+[ext_resource type="Texture2D" uid="uid://b4aei3sqpcmow" path="res://Sprites/toprak.png" id="2_b2bpf"]
+[ext_resource type="Texture2D" uid="uid://bibmvx1u74q4q" path="res://Sprites/içkale zemin.png" id="3_7lihs"]
+[ext_resource type="PackedScene" uid="uid://cd6qhttn2mc1g" path="res://Scenes/Door.tscn" id="4_fgofq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epypp"]
-texture = ExtResource("2_0e48y")
+texture = ExtResource("2_b2bpf")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -86,7 +87,7 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_epypp")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
-texture = ExtResource("3_epypp")
+texture = ExtResource("3_7lihs")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -134,9 +135,9 @@ texture = ExtResource("3_epypp")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0hol4")
 
-[node name="game" type="Node2D"]
+[node name="Game" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_wtcfe")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_kldst")]
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(1, -1)
@@ -154,3 +155,6 @@ position = Vector2(-1, -1)
 tile_set = SubResource("TileSet_q6r6c")
 format = 2
 layer_0/tile_data = PackedInt32Array(196603, 196608, 0, 262139, 196608, 1, 327675, 196608, 1, 393211, 196608, 1, 458747, 196608, 2, 196604, 262144, 0, 262140, 262144, 1, 327676, 262144, 1, 393212, 262144, 1, 458748, 262144, 2, 196605, 262144, 0, 262141, 262144, 1, 327677, 262144, 1, 393213, 262144, 1, 458749, 262144, 2, 196606, 262144, 0, 262142, 262144, 1, 327678, 262144, 1, 393214, 262144, 1, 458750, 262144, 2, 196607, 262144, 0, 262143, 262144, 1, 327679, 262144, 1, 393215, 262144, 1, 458751, 262144, 2, 131072, 262144, 0, 196608, 262144, 1, 262144, 262144, 1, 327680, 262144, 1, 393216, 262144, 2, 131073, 262144, 0, 196609, 262144, 1, 262145, 262144, 1, 327681, 262144, 1, 393217, 262144, 2, 131074, 262144, 0, 196610, 262144, 1, 262146, 262144, 1, 327682, 262144, 1, 393218, 262144, 2, 131075, 327680, 0, 196611, 327680, 1, 262147, 327680, 1, 327683, 327680, 1, 393219, 327680, 2, 131077, 393216, 0, 196613, 393216, 1, 262149, 393216, 1, 327685, 393216, 2, 131079, 196608, 0, 196615, 196608, 2, 131080, 327680, 0, 196616, 327680, 2, -65532, 393216, 0, 4, 393216, 1, 65540, 393216, 2)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_fgofq")]
+position = Vector2(43, 15)

@@ -3,25 +3,12 @@ extends CharacterBody2D
 var walkfinished = true
 var jumpfinished = true
 var inputDir
-#var onDoor = false
-var onDoor = true
 var xSpeed = 0.0
 var ySpeed = 0.0
 @onready var sprite = $AnimatedSprite2D
-@onready var exterior = $/root/game/ExteriorTileMap
-@onready var interior = $/root/game/InteriorTileMap
 
 func _physics_process(delta: float) -> void:
-	$Label.text = "X velocity: "+str(velocity.x) + "\nY velocity: " + str(velocity.y)
-	#iceri disari cikma
-	if Input.is_action_just_pressed("GroundSwap") and onDoor:
-		set_collision_layer_value(1, not get_collision_layer_value(1))
-		set_collision_layer_value(2, not get_collision_layer_value(2))
-		set_collision_mask_value(1, not get_collision_mask_value(1))
-		set_collision_mask_value(2, not get_collision_mask_value(2))
-		exterior.visible = not exterior.visible
-		interior.visible = not interior.visible
-	
+	#$Label.text = "X velocity: "+str(velocity.x) + "\nY velocity: " + str(velocity.y)	
 	
 	#hareket
 	if is_on_ceiling() and ySpeed < 0:
@@ -51,7 +38,10 @@ func _physics_process(delta: float) -> void:
 			xSpeed /= 1.25
 		else:
 			xSpeed=0
-	velocity = Vector2(xSpeed,ySpeed)
+	if sprite.scale < Vector2.ONE:
+		velocity = Vector2.ZERO
+	else:
+		velocity = Vector2(xSpeed,ySpeed)
 	move_and_slide()
 	
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1igwla6ub67u"
-path="res://.godot/imported/castletileset.png-84e600086c6ac00082fb718106d2409a.ctex"
+uid="uid://b4aei3sqpcmow"
+path="res://.godot/imported/toprak.png-028b1c6a9003bd003cb9ecf7e437b8fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/castletileset.png"
-dest_files=["res://.godot/imported/castletileset.png-84e600086c6ac00082fb718106d2409a.ctex"]
+source_file="res://Sprites/toprak.png"
+dest_files=["res://.godot/imported/toprak.png-028b1c6a9003bd003cb9ecf7e437b8fb.ctex"]
 
 [params]
 
