@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://dwny3mqlbkrv6" path="res://character_body_2d.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://bo002nr2kqyog" path="res://Sprites/vampir.png" id="2_ghijl"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44cfe"]
-radius = 16.0
-height = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
+size = Vector2(20, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nr8wp"]
 atlas = ExtResource("2_ghijl")
@@ -133,10 +132,11 @@ up_direction = Vector2(0.099503726, -0.9950372)
 script = ExtResource("1_ij6vw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_44cfe")
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ij6vw")
 debug_color = Color(0.801318, 0.26409635, 0.8125065, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dd465")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
