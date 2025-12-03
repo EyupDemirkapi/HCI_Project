@@ -13,8 +13,9 @@ zoom = Vector2(3, 3)
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_wtcfe")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(137, -258)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-114, 142)
+position = Vector2(-129, 289.99997)
 scale = Vector2(5.785002, 4.300081)
 shape = SubResource("WorldBoundaryShape2D_wtcfe")
