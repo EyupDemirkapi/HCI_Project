@@ -240,7 +240,6 @@ animations = [{
 [node name="player" type="CharacterBody2D"]
 physics_interpolation_mode = 2
 disable_mode = 2
-up_direction = Vector2(0.099503726, -0.9950372)
 script = ExtResource("1_ij6vw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

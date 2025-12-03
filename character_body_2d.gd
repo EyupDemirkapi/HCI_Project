@@ -2,10 +2,14 @@ extends CharacterBody2D
 
 var walkfinished = true
 var jumpfinished = true
+var inputDir
 #var onDoor = false
 var onDoor = true
 var xSpeed = 0.0
 var ySpeed = 0.0
+@onready var sprite = $AnimatedSprite2D
+@onready var exterior = $/root/game/ExteriorTileMap
+@onready var interior = $/root/game/InteriorTileMap
 
 func _physics_process(delta: float) -> void:
 	$Label.text = "X velocity: "+str(velocity.x) + "\nY velocity: " + str(velocity.y)
@@ -15,35 +19,33 @@ func _physics_process(delta: float) -> void:
 		set_collision_layer_value(2, not get_collision_layer_value(2))
 		set_collision_mask_value(1, not get_collision_mask_value(1))
 		set_collision_mask_value(2, not get_collision_mask_value(2))
-		$/root/game/ExteriorTileMap.visible = not $/root/game/ExteriorTileMap.visible
-		$/root/game/InteriorTileMap.visible = not $/root/game/InteriorTileMap.visible
+		exterior.visible = not exterior.visible
+		interior.visible = not interior.visible
 	
 	
 	#hareket
 	if is_on_ceiling() and ySpeed < 0:
 		ySpeed = 0
 	if is_on_floor():
-		if $AnimatedSprite2D.animation == "jump":
-			$AnimatedSprite2D.play("land")
+		if sprite.animation == "jump":
+			sprite.play("land")
 		ySpeed = 0
-		if Input.is_action_just_pressed("Jump"):
+		if Input.is_action_pressed("Jump"):
 			jumpfinished = false
-			$AnimatedSprite2D.play("jumpstart")
+			sprite.play("jumpstart")
 			ySpeed -= 300
 	else:
 		ySpeed += 10
-	if Input.is_action_pressed("MoveLeft") and abs(xSpeed) < 225:
+	inputDir = Input.get_axis("MoveLeft","MoveRight")
+	if inputDir != 0:
+		xSpeed = 225 * inputDir
 		if jumpfinished:
-			$AnimatedSprite2D.play("walk")
+			sprite.play("walk")
 		walkfinished = false
-		$AnimatedSprite2D.flip_h = true
-		xSpeed = -225
-	elif Input.is_action_pressed("MoveRight") and abs(xSpeed) < 225:
-		if jumpfinished:
-			$AnimatedSprite2D.play("walk")
-		walkfinished = false
-		$AnimatedSprite2D.flip_h = false
-		xSpeed = 225
+		if inputDir < 0:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
 	else:
 		if abs(xSpeed) > 1:
 			xSpeed /= 1.25
@@ -55,11 +57,11 @@ func _physics_process(delta: float) -> void:
 	
 	#animasyon
 	if walkfinished and jumpfinished:
-		$AnimatedSprite2D.play("idle")
-	if $AnimatedSprite2D.animation == "walk" and $AnimatedSprite2D.frame >= 6:
+		sprite.play("idle")
+	if sprite.animation == "walk" and sprite.frame >= 6:
 		walkfinished = true
-	if $AnimatedSprite2D.animation == "land" and $AnimatedSprite2D.frame >= 4:
+	if sprite.animation == "land" and sprite.frame >= 4:
 		jumpfinished = true
-		$AnimatedSprite2D.play("idle")
-	if $AnimatedSprite2D.animation == "jumpstart" and $AnimatedSprite2D.frame >= 4:
-			$AnimatedSprite2D.play("jump")
+		sprite.play("idle")
+	if sprite.animation == "jumpstart" and sprite.frame >= 4:
+			sprite.play("jump")
