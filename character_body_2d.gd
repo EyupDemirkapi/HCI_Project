@@ -10,16 +10,16 @@ func _physics_process(delta: float) -> void:
 			velocity.y-=300
 	else:
 		velocity.y += 10
-	if Input.is_action_pressed("ui_left") and abs(velocity.x) < 300:
+	if Input.is_action_pressed("ui_left") and abs(velocity.x) < 225:
 		$AnimatedSprite2D.play("walk")
 		walkfinished = false
 		$AnimatedSprite2D.flip_h = true
-		velocity.x=-300
-	elif Input.is_action_pressed("ui_right") and abs(velocity.x) < 300:
+		velocity.x=-225
+	elif Input.is_action_pressed("ui_right") and abs(velocity.x) < 225:
 		$AnimatedSprite2D.play("walk")
 		walkfinished = false
 		$AnimatedSprite2D.flip_h = false
-		velocity.x=300
+		velocity.x=225
 	else:
 		if abs(velocity.x) > 1:
 			velocity.x /= 1.25
