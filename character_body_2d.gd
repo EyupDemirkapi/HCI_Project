@@ -16,8 +16,11 @@ func _physics_process(delta: float) -> void:
 	
 	#hareket
 	if is_on_floor():
+		if $AnimatedSprite2D.animation == "jump":
+			$AnimatedSprite2D.play("land")
 		velocity.y = 0
 		if Input.is_action_just_pressed("ui_up"):
+			$AnimatedSprite2D.play("jumpstart")
 			velocity.y-=300
 	else:
 		velocity.y += 10
@@ -41,5 +44,6 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("idle")
 	if $AnimatedSprite2D.animation == "walk" and $AnimatedSprite2D.frame >= 6:
 		walkfinished = true
-
+	if $AnimatedSprite2D.animation == "jumpstart" and $AnimatedSprite2D.frame >= 4:
+			$AnimatedSprite2D.play("jump")
 	move_and_slide()
