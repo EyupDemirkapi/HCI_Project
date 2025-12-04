@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("Jump"):
 			jumpfinished = false
 			sprite.play("jumpstart")
-			ySpeed -= 300
+			ySpeed -= 310
 	else:
 		ySpeed += 10
 	inputDir = Input.get_axis("MoveLeft","MoveRight")
