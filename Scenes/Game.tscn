@@ -144,7 +144,6 @@ position = Vector2(1, -1)
 zoom = Vector2(3, 3)
 
 [node name="ExteriorTileMap" type="TileMap" parent="."]
-visible = false
 position = Vector2(-1, -1)
 tile_set = SubResource("TileSet_0hol4")
 format = 2
