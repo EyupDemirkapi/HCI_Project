@@ -7,7 +7,6 @@ var inputDir
 var xSpeed = 0.0
 var ySpeed = 0.0
 @onready var sprite = $AnimatedSprite2D
-@onready var checker = $GroundChecker
 var jumpBuffer = 0
 var attackTimer = 0
 
