@@ -450,7 +450,6 @@ sources/0 = SubResource("TileSetAtlasSource_0hol4")
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_kldst")]
-z_as_relative = false
 
 [node name="ExteriorTileMap" type="TileMap" parent="."]
 z_as_relative = false
@@ -473,6 +472,4 @@ layer_0/tile_data = PackedInt32Array(196606, 65536, 2, 196607, 65536, 2, 131072,
 position = Vector2(82, 32)
 
 [node name="Door" parent="." instance=ExtResource("4_fgofq")]
-z_index = -1
-z_as_relative = false
 position = Vector2(43, 15)
