@@ -1,12 +1,23 @@
 extends CharacterBody2D
 
+@onready var SPEED = $Stats.SPEED
+@onready var DASH_SPEED = $Stats.DASH_SPEED
+@onready var DASH_DURATION = $Stats.DASH_DURATION
+@onready var JUMP_HEIGHT = $Stats.JUMP_HEIGHT
+@onready var JUMP_BUFFER = $Stats.JUMP_BUFFER
+@onready var HEALTH = $Stats.HEALTH
+@onready var STRENGTH = $Stats.STRENGTH
+
 var walkfinished = true
 var jumpfinished = true
 var attackfinished = true
+
 var inputDir
 var xSpeed = 0.0
 var ySpeed = 0.0
+
 @onready var sprite = $AnimatedSprite2D
+
 var jumpBuffer = 0
 var attackTimer = 0
 
@@ -21,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_ceiling() and ySpeed < 0:
 		ySpeed = 0
 	if is_on_floor():
-		jumpBuffer = 0.2
+		jumpBuffer = JUMP_BUFFER
 		if sprite.animation == "JumpLoop" or (sprite.animation == "AttackEnd" and sprite.frame >= 4):
 			attackfinished = true
 			sprite.play("Land")
@@ -41,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	inputDir = Input.get_axis("MoveLeft","MoveRight")
 	if inputDir != 0:
 		if attackfinished:
-			xSpeed = 225 * inputDir
+			xSpeed = SPEED * inputDir
 		if jumpfinished and attackfinished:
 			sprite.play("Walk")
 		walkfinished = false
@@ -84,18 +95,18 @@ func jump(bufferAmount, currentBuffer) -> void:
 		jumpfinished = false
 		if attackfinished:
 			sprite.play("JumpStart")
-			ySpeed -= 310 + bufferAmount / (int(15 * currentBuffer)+1)
+			ySpeed -= JUMP_HEIGHT + bufferAmount / (int(15 * currentBuffer)+1)
 		else:
-			ySpeed -= 200 + bufferAmount / (int(15 * currentBuffer)+1)
+			ySpeed -= JUMP_HEIGHT*2/3 + bufferAmount / (int(15 * currentBuffer)+1)
 		jumpBuffer = 0
 		
 func attack() -> void:
 	if Input.is_action_pressed("Attack") and attackfinished:
 		attackfinished = false
 		sprite.play("AttackStart")
-		attackTimer = 0.65
+		attackTimer = DASH_DURATION
 	if not attackfinished:
 		if sprite.flip_h:
-			xSpeed = -300
+			xSpeed = -DASH_SPEED
 		else:
-			xSpeed = 300
+			xSpeed = DASH_SPEED

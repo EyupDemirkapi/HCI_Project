@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://5pst0gi7it2y" path="res://Sprites/örümcek.png" id="1_7jur5"]
 [ext_resource type="Script" uid="uid://d3wp8xkjm5q4n" path="res://Scripts/BasicEnemy.gd" id="1_cgp8y"]
-[ext_resource type="Script" uid="uid://dsv6g3cnnr4lo" path="res://Scripts/Spider.gd" id="3_oc654"]
+[ext_resource type="Script" uid="uid://dsv6g3cnnr4lo" path="res://Scripts/SpiderStats.gd" id="3_oc654"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgp8y"]
 atlas = ExtResource("1_7jur5")
