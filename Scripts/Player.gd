@@ -20,13 +20,11 @@ func _physics_process(delta: float) -> void:
 		if sprite.animation == "jump":
 			sprite.play("land")
 		ySpeed = 0
-		if Input.is_action_pressed("Jump"):
-			jump(0, jumpBuffer)
+		jump(0, jumpBuffer)
 	else:
 		if jumpBuffer > 0:
 			jumpBuffer -= delta
-			if Input.is_action_pressed("Jump"):
-				jump(150, jumpBuffer)
+			jump(150, jumpBuffer)
 		ySpeed += 10
 		
 	#sağ sol hareket
@@ -67,7 +65,8 @@ func _physics_process(delta: float) -> void:
 
 
 func jump(bufferAmount, currentBuffer) -> void:
-	jumpfinished = false
-	sprite.play("jumpstart")
-	ySpeed -= 310 + bufferAmount / (int(15 * currentBuffer)+1)
-	jumpBuffer = 0
+	if Input.is_action_pressed("Jump"):
+		jumpfinished = false
+		sprite.play("jumpstart")
+		ySpeed -= 310 + bufferAmount / (int(15 * currentBuffer)+1)
+		jumpBuffer = 0

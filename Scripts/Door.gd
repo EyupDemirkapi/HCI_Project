@@ -22,11 +22,9 @@ func _physics_process(delta:float) -> void:
 			$/root/Game/Player/AnimatedSprite2D.scale *= 0.8
 		elif sprite.frame < 8:
 			if isInterior:
-				get_tree().create_tween().tween_property(interior,"modulate:a",1.0,0.1)
-				get_tree().create_tween().tween_property(exterior,"modulate:a",0.0,0.1)
+				alphaTween(true)
 			else:
-				get_tree().create_tween().tween_property(exterior,"modulate:a",1.0,0.1)
-				get_tree().create_tween().tween_property(interior,"modulate:a",0.0,0.1)
+				alphaTween(false)
 			if $/root/Game/Player/AnimatedSprite2D.scale < Vector2.ONE:
 				$/root/Game/Player/AnimatedSprite2D.scale /= 0.8
 			else:
@@ -41,6 +39,10 @@ func _physics_process(delta:float) -> void:
 	
 	if Input.is_action_just_pressed("GroundSwap") and $Area2D.overlaps_body(player):
 		sprite.play("anim")
+
+func alphaTween(isToInt)-> void:
+	get_tree().create_tween().tween_property(interior,"modulate:a",int(isToInt),0.1)
+	get_tree().create_tween().tween_property(exterior,"modulate:a",int(not isToInt),0.1)
 
 
 func collisionChange(layerValue) -> void:
