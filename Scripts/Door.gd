@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _physics_process(delta:float) -> void:
 	#iceri disari cikma
-	if sprite.animation == "anim":
+	if sprite.animation != "Idle":
 		if not turned:
 			turned = true
 			isInterior = not isInterior
@@ -34,11 +34,14 @@ func _physics_process(delta:float) -> void:
 			$/root/Game/Player/AnimatedSprite2D.scale = Vector2.ONE #nolur nolmaz
 			collisionChange(1)
 			collisionChange(2)
-			sprite.play("idle")
+			sprite.play("Idle")
 	
 	
-	if Input.is_action_just_pressed("GroundSwap") and $Area2D.overlaps_body(player):
-		sprite.play("anim")
+	if Input.is_action_just_pressed("GroundSwap") and $Area2D.overlaps_body(player) and sprite.animation == "Idle":
+		if isInterior:
+			sprite.play("Outside")
+		else:
+			sprite.play("Inside")
 
 func alphaTween(isToInt)-> void:
 	get_tree().create_tween().tween_property(interior,"modulate:a",int(isToInt),0.1)
