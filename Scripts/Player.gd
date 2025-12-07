@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var JUMP_BUFFER = $Stats.JUMP_BUFFER
 @onready var HEALTH = $Stats.HEALTH
 @onready var STRENGTH = $Stats.STRENGTH
+@onready var INVI_DURATION = $Stats.INVI_DURATION
 
 var walkfinished = true
 var jumpfinished = true
@@ -15,6 +16,8 @@ var attackfinished = true
 var inputDir
 var xSpeed = 0.0
 var ySpeed = 0.0
+
+var invitimer = 0
 
 @onready var sprite = $AnimatedSprite2D
 

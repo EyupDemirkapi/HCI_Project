@@ -1,18 +1,30 @@
 extends Camera2D
+
 var rect
 var nightcolor = Color(0.045, 0.008, 0.131, 1.0)
 var daycolor = Color(0.289, 0.693, 0.868, 1.0)
 var color = nightcolor
 var lerpcolor
+
 var day = false
 var daytimer = 0
+
 @onready var moon = $Moon
 @onready var sun = $Sun
+@onready var player = $/root/Game/Player
+
 const DAYLENGTH = 100
 const YVALUE = 60
+
 var alphatimer
 
+const CAMERA_BOT_LIMIT = 0.0
+const CAMERA_TOP_LIMIT = -100.0
 func _physics_process(delta: float) -> void:
+	if player.position.y >= CAMERA_BOT_LIMIT or player.position.y <= CAMERA_TOP_LIMIT:
+		position.x = player.position.x
+	else:
+		position = player.position
 	#arkaplan boyutu
 	rect = Rect2(DisplayServer.screen_get_position() - DisplayServer.screen_get_size()/2,DisplayServer.screen_get_size())
 	#ayla güneşin alfasını hesaplamak için

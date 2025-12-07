@@ -126,7 +126,6 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_o58ds")
 animation = &"Walk"
 autoplay = "Walk"
-frame_progress = 0.32221776
 
 [node name="HurtArea" type="Area2D" parent="."]
 

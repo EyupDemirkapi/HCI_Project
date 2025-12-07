@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfm46jyc6gku2"]
+[gd_scene load_steps=12 format=3 uid="uid://bfm46jyc6gku2"]
 
 [ext_resource type="PackedScene" uid="uid://b3gfvdnqrfvf6" path="res://Scenes/Player.tscn" id="1_kldst"]
 [ext_resource type="Texture2D" uid="uid://b4aei3sqpcmow" path="res://Sprites/toprak.png" id="2_b2bpf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cd6qhttn2mc1g" path="res://Scenes/Door.tscn" id="4_fgofq"]
 [ext_resource type="PackedScene" uid="uid://d1mfpj2wu23l4" path="res://Scenes/Rat.tscn" id="5_7lihs"]
 [ext_resource type="PackedScene" uid="uid://xed4xyvwc7vq" path="res://Scenes/Spider.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://cba3bk3l05b3f" path="res://Scenes/Camera.tscn" id="7_fgofq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epypp"]
 texture = ExtResource("2_b2bpf")
@@ -480,3 +481,5 @@ position = Vector2(236, 14)
 
 [node name="Door" parent="." instance=ExtResource("4_fgofq")]
 position = Vector2(43, 15)
+
+[node name="Camera2D" parent="." instance=ExtResource("7_fgofq")]
