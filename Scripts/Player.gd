@@ -26,7 +26,9 @@ var attackTimer = 0
 
 func _physics_process(delta: float) -> void:
 	#$Label.text = "X velocity: "+str(velocity.x) + "\nY velocity: " + str(velocity.y)	
-	
+	$Label.text = str(HEALTH)
+	if invitimer > 0:
+		invitimer -= delta
 	#saldırma
 	attack()
 	if attackTimer > 0 and sprite.scale >= Vector2.ONE:

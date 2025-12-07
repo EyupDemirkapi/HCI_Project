@@ -349,3 +349,9 @@ autoplay = "Idle"
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("6_nn08x")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -46.0
+offset_right = 21.0
+offset_bottom = -23.0

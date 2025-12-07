@@ -100,8 +100,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oc654"]
-size = Vector2(11, 7)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrc5k"]
+size = Vector2(10, 7)
 
 [node name="Spider" type="Node2D"]
 z_index = 1
@@ -117,8 +117,8 @@ autoplay = "Walk"
 [node name="HurtArea" parent="." instance=ExtResource("3_hrc5k")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
-position = Vector2(1.5, -3.5)
-shape = SubResource("RectangleShape2D_oc654")
+position = Vector2(2, -3.5)
+shape = SubResource("RectangleShape2D_hrc5k")
 
 [node name="RaycastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -3)

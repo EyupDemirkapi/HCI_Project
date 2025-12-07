@@ -1,9 +1,8 @@
 extends Area2D
 
-@onready var player = $root/Game/Player
 
-func body_entered(body):
-	if body == player:
+func _on_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
 		if body.sprite.animation == "AttackStart" or body.sprite.animation == "AttackLoop" or body.sprite.animation == "AttackEnd":
 			if get_parent().invitimer <= 0:
 				get_parent().HEALTH -= body.STRENGTH
