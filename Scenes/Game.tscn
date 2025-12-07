@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfm46jyc6gku2"]
+[gd_scene load_steps=16 format=3 uid="uid://bfm46jyc6gku2"]
 
 [ext_resource type="PackedScene" uid="uid://b3gfvdnqrfvf6" path="res://Scenes/Player.tscn" id="1_kldst"]
 [ext_resource type="Texture2D" uid="uid://b4aei3sqpcmow" path="res://Sprites/toprak.png" id="2_b2bpf"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://d1mfpj2wu23l4" path="res://Scenes/Rat.tscn" id="5_7lihs"]
 [ext_resource type="PackedScene" uid="uid://xed4xyvwc7vq" path="res://Scenes/Spider.tscn" id="5_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://cba3bk3l05b3f" path="res://Scenes/Camera.tscn" id="7_fgofq"]
+[ext_resource type="PackedScene" uid="uid://uashcoev36bo" path="res://Scenes/HurtArea.tscn" id="8_2irst"]
+[ext_resource type="PackedScene" uid="uid://dg7ntxppviwx6" path="res://Scenes/KillZone.tscn" id="8_bf53h"]
+[ext_resource type="Script" uid="uid://lu45y3y8cvan" path="res://Scripts/KillZoneStats.gd" id="9_71axn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epypp"]
 texture = ExtResource("2_b2bpf")
@@ -449,6 +452,8 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.7251547, 0, 0.19582623, 1)
 sources/0 = SubResource("TileSetAtlasSource_0hol4")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bf53h"]
+
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_kldst")]
@@ -483,3 +488,12 @@ position = Vector2(236, 14)
 position = Vector2(43, 15)
 
 [node name="Camera2D" parent="." instance=ExtResource("7_fgofq")]
+
+[node name="KillZone" parent="." instance=ExtResource("8_bf53h")]
+script = ExtResource("9_71axn")
+
+[node name="HurtArea" parent="KillZone" instance=ExtResource("8_2irst")]
+position = Vector2(0, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone/HurtArea"]
+shape = SubResource("WorldBoundaryShape2D_bf53h")
