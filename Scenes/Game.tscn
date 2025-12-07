@@ -475,5 +475,8 @@ layer_0/tile_data = PackedInt32Array(196606, 65536, 2, 196607, 65536, 2, 131072,
 [node name="Spider" parent="InteriorTileMap" instance=ExtResource("5_b2bpf")]
 position = Vector2(82, 32)
 
+[node name="Rat" parent="InteriorTileMap" instance=ExtResource("5_7lihs")]
+position = Vector2(236, 14)
+
 [node name="Door" parent="." instance=ExtResource("4_fgofq")]
 position = Vector2(43, 15)
