@@ -6,3 +6,4 @@ const HEALTH = 2
 const STRENGTH = 1
 const INVI_DURATION = 0.5
 const MASS = 1.5
+const BYPASSES_INVIS = false

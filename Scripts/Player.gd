@@ -44,7 +44,8 @@ func _physics_process(delta: float) -> void:
 			if sprite.animation == "JumpLoop" or (sprite.animation == "AttackEnd" and sprite.frame >= 4):
 				attackfinished = true
 				sprite.play("Land")
-			ySpeed = 0
+			if ySpeed >= 0:
+				ySpeed = 0
 			jump(0, jumpBuffer)
 		else:
 			if jumpBuffer > 0:
@@ -77,6 +78,7 @@ func _physics_process(delta: float) -> void:
 			
 	#kapıya girerken hareketin engellenmesi
 	if sprite.scale < Vector2.ONE:
+		invitimer = INVI_DURATION
 		velocity = Vector2.ZERO
 	else:
 		velocity = Vector2(xSpeed,ySpeed)
@@ -105,6 +107,8 @@ func _physics_process(delta: float) -> void:
 			freed = true
 			$CollisionShape2D.queue_free()
 		ySpeed += 10
+		if position.y > 1000:
+			get_tree().reload_current_scene()
 
 
 func jump(bufferAmount, currentBuffer) -> void:
@@ -127,3 +131,9 @@ func attack() -> void:
 			xSpeed = -DASH_SPEED
 		else:
 			xSpeed = DASH_SPEED
+
+
+func knockback(playerPos,strength) -> void:
+	if HEALTH > 0:
+		xSpeed = playerPos * strength
+		ySpeed = -25 * strength

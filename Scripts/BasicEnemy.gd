@@ -7,6 +7,7 @@ const LEVEL_LIMIT = 120
 @onready var STRENGTH = $Stats.STRENGTH
 @onready var INVI_DURATION = $Stats.INVI_DURATION
 @onready var MASS = $Stats.MASS
+@onready var BYPASSES_INVIS = $Stats.BYPASSES_INVIS
 
 var xSpeed = 0
 var ySpeed = 0
@@ -47,16 +48,17 @@ func _physics_process(delta: float) -> void:
 				direction = 1
 			elif RayRight.is_colliding() and RayRight.get_collider() != player:
 				direction = -1
-			if RayDown.is_colliding():
-				ySpeed = 0
-			else:
-				ySpeed += 10
 		else:
 			sprite.play("Hurt")
-			if RayDown.is_colliding() and RayDown.get_collider() != player:
+		
+		if RayDown.is_colliding() and RayDown.get_collider() != player:
+			if sprite.animation == "Hurt" and sprite.frame > 0:
 				knockedBack = false
-			else:
-				ySpeed += 10
+			if ySpeed >= 0:
+				ySpeed = 0
+		else:
+			ySpeed += 10
+			
 		
 		if direction > 0:
 			sprite.flip_h = true
@@ -65,7 +67,8 @@ func _physics_process(delta: float) -> void:
 			
 		
 	else:
-		sprite.play("Dead")
+		if sprite.animation != "Dead":
+			sprite.play("Dead")
 		if not freed:
 			ySpeed = -250
 			freed = true

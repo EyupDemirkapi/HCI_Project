@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://curcc564obj53" path="res://Scripts/HurtArea.gd" id="1_gxhwl"]
 
 [node name="HurtArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_gxhwl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
