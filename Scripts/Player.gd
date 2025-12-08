@@ -151,6 +151,8 @@ func attack() -> void:
 
 func knockback(playerPos,strength) -> void:
 	if HEALTH > 0 and invitimer <= 0:
+		attackfinished = true
+		jumpfinished = true
 		knockedBack = true
 		sprite.play("Dead")
 		xSpeed = playerPos * strength
