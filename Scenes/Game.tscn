@@ -577,7 +577,6 @@ script = ExtResource("6_dahhg")
 position = Vector2(43, 15)
 
 [node name="Camera2D" parent="." instance=ExtResource("7_fgofq")]
-z_index = -5
 
 [node name="KillZone" parent="." instance=ExtResource("8_bf53h")]
 script = ExtResource("9_71axn")
