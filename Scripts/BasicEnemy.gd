@@ -8,6 +8,7 @@ const LEVEL_LIMIT = 120
 @onready var INVI_DURATION = $Stats.INVI_DURATION
 @onready var MASS = $Stats.MASS
 @onready var BYPASSES_INVIS = $Stats.BYPASSES_INVIS
+@onready var AWARENESS = $Stats.AWARENESS
 
 var xSpeed = 0
 var ySpeed = 0
