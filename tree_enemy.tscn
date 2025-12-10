@@ -1,8 +1,8 @@
 [gd_scene load_steps=31 format=3 uid="uid://dpsjy4jrj2a2x"]
 
-[ext_resource type="Script" path="res://tree_enemy.gd" id="1_xrvsy"]
-[ext_resource type="Texture2D" path="res://Sprites/Tree_Enemy_sprite.png" id="2_r8pdk"]
-[ext_resource type="Script" path="res://stats.gd" id="3_r8pdk"]
+[ext_resource type="Script" uid="uid://51bftvpvo0s1" path="res://tree_enemy.gd" id="1_xrvsy"]
+[ext_resource type="Texture2D" uid="uid://cipi18dmb1ros" path="res://Sprites/Tree_Enemy_sprite.png" id="2_r8pdk"]
+[ext_resource type="Script" uid="uid://cq5vqxgotrdxr" path="res://Tree_stats.gd" id="3_r8pdk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep4db"]
 atlas = ExtResource("2_r8pdk")
