@@ -1,8 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://dpsjy4jrj2a2x"]
+[gd_scene load_steps=30 format=3 uid="uid://dtun8dhwb3qmw"]
 
-[ext_resource type="Script" uid="uid://51bftvpvo0s1" path="res://tree_enemy.gd" id="1_xrvsy"]
+[ext_resource type="Script" path="res://tree_enemy.gd" id="1_xrvsy"]
 [ext_resource type="Texture2D" uid="uid://cipi18dmb1ros" path="res://Sprites/Tree_Enemy_sprite.png" id="2_r8pdk"]
-[ext_resource type="Script" uid="uid://cq5vqxgotrdxr" path="res://Tree_stats.gd" id="3_r8pdk"]
+[ext_resource type="Script" path="res://Tree_stats.gd" id="3_r8pdk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep4db"]
 atlas = ExtResource("2_r8pdk")
@@ -212,6 +212,8 @@ scale = Vector2(37.563923, 3.1311433)
 shape = SubResource("RectangleShape2D_xrvsy")
 
 [node name="HurtArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
 visible = false
