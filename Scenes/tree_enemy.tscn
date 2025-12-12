@@ -1,8 +1,9 @@
 [gd_scene load_steps=30 format=3 uid="uid://dtun8dhwb3qmw"]
 
-[ext_resource type="Script" path="res://tree_enemy.gd" id="1_xrvsy"]
+[ext_resource type="Script" uid="uid://51bftvpvo0s1" path="res://Scripts/StationaryEnemy.gd" id="1_xrvsy"]
 [ext_resource type="Texture2D" uid="uid://cipi18dmb1ros" path="res://Sprites/Tree_Enemy_sprite.png" id="2_r8pdk"]
-[ext_resource type="Script" path="res://Tree_stats.gd" id="3_r8pdk"]
+[ext_resource type="Script" uid="uid://cq5vqxgotrdxr" path="res://Scripts/TreeStats.gd" id="3_r8pdk"]
+[ext_resource type="Script" uid="uid://curcc564obj53" path="res://Scripts/HurtArea.gd" id="3_rtnmu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep4db"]
 atlas = ExtResource("2_r8pdk")
@@ -188,39 +189,35 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrvsy"]
-size = Vector2(0.07893325, 3.488941)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8pdk"]
-size = Vector2(101, 104)
+size = Vector2(48, 54)
 
 [node name="TreeEnemy" type="Node2D"]
 script = ExtResource("1_xrvsy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -56)
 sprite_frames = SubResource("SpriteFrames_rwhvo")
 animation = &"attack"
 autoplay = "idle"
 
-[node name="AggroArea" type="Area2D" parent="."]
-scale = Vector2(34.063595, 9.519999)
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
-position = Vector2(-0.014678373, 0.42016792)
-scale = Vector2(37.563923, 3.1311433)
-shape = SubResource("RectangleShape2D_xrvsy")
-
 [node name="HurtArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("3_rtnmu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
-position = Vector2(-0.5, 4)
+position = Vector2(0, -27)
 shape = SubResource("RectangleShape2D_r8pdk")
+
+[node name="RaycastDown" type="RayCast2D" parent="."]
+position = Vector2(0, -1)
+target_position = Vector2(0, 2)
+collision_mask = 0
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("3_r8pdk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="HurtArea" to="HurtArea" method="_on_body_entered"]
