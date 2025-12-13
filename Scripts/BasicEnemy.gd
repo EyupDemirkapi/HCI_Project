@@ -10,6 +10,7 @@ const isStationary = false
 @onready var MASS = $Stats.MASS
 @onready var BYPASSES_INVIS = $Stats.BYPASSES_INVIS
 @onready var AWARENESS = $Stats.AWARENESS
+@onready var ATTACKTIMER = $Stats.ATTACKTIMER
 
 var xSpeed = 0
 var ySpeed = 0
@@ -18,7 +19,7 @@ var invitimer = 0
 var knockedBack = false
 var freed = false
 var attacking = false
-var attackTimer = 5.0
+var attackTimer = ATTACKTIMER
 
 @onready var sprite = $AnimatedSprite2D
 @onready var RayLeft = $RaycastLeft
@@ -28,6 +29,7 @@ var attackTimer = 5.0
 @onready var hurtArea = $HurtArea
 
 func _ready() -> void:
+	attackTimer = ATTACKTIMER
 	RayLeft.set_collision_mask_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),true)
 	RayRight.set_collision_mask_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),true)
 	RayDown.set_collision_mask_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),true)
@@ -43,7 +45,9 @@ func _physics_process(delta: float) -> void:
 		if AWARENESS <= 0:
 			attacking = true
 		elif abs(position.x - player.position.x) <= AWARENESS:
-			if attackTimer <= 0.0:
+			if attackTimer > 0.0:
+				attackTimer -= delta
+			elif sprite.animation != "Attack":
 				sprite.play("Attack")
 				attacking = true
 		
@@ -55,12 +59,14 @@ func _physics_process(delta: float) -> void:
 		position.x += direction * delta * xSpeed
 		
 		if not knockedBack:
-			sprite.play("Walk")
-			xSpeed = SPEED
-			if RayLeft.is_colliding() and RayLeft.get_collider() != player:
-				direction = 1
-			elif RayRight.is_colliding() and RayRight.get_collider() != player:
-				direction = -1
+			if sprite.animation == "Hurt":
+				sprite.play("Walk")
+			else:
+				xSpeed = SPEED
+				if RayLeft.is_colliding() and RayLeft.get_collider() != player:
+					direction = 1
+				elif RayRight.is_colliding() and RayRight.get_collider() != player:
+					direction = -1
 		else:
 			sprite.play("Hurt")
 		
@@ -93,3 +99,9 @@ func knockback(playerPos,strength) -> void:
 		knockedBack = true
 		xSpeed = playerPos * strength
 		ySpeed = -25 * strength
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if sprite.animation == "Attack":
+		attackTimer = ATTACKTIMER
+		attacking = false
+		sprite.play("Idle")

@@ -8,3 +8,4 @@ const INVI_DURATION = 0.5
 const MASS = 2
 const BYPASSES_INVIS = false
 const AWARENESS = 0.0
+const ATTACKTIMER = 1.0
