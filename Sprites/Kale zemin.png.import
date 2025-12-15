@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgo0canbpyg8b"
-path="res://.godot/imported/Dış_Kale_Sprite.png-251fa534bc2bb152a17baa75b2e103a0.ctex"
+uid="uid://bibmvx1u74q4q"
+path="res://.godot/imported/Kale zemin.png-88a9cdc89a3bd504cc907db3d2af4d55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Dış_Kale_Sprite.png"
-dest_files=["res://.godot/imported/Dış_Kale_Sprite.png-251fa534bc2bb152a17baa75b2e103a0.ctex"]
+source_file="res://Sprites/Kale zemin.png"
+dest_files=["res://.godot/imported/Kale zemin.png-88a9cdc89a3bd504cc907db3d2af4d55.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dl5fbvbpwj1b3"]
 
-[ext_resource type="Texture2D" uid="uid://dtbfphwxpdnt6" path="res://Sprites/Background_Sprite.png" id="1_3gqi3"]
-[ext_resource type="Script" path="res://Scripts/Parallax.gd" id="2_xh82g"]
+[ext_resource type="Texture2D" uid="uid://dtbfphwxpdnt6" path="res://Sprites/arkaplan.png" id="1_3gqi3"]
+[ext_resource type="Script" uid="uid://dylmnnv5b84f" path="res://Scripts/Parallax.gd" id="2_xh82g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wtdk"]
 texture = ExtResource("1_3gqi3")

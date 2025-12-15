@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bibmvx1u74q4q"
-path="res://.godot/imported/içkale zemin.png-b715d4a70ca77ad2f321b1d195ff827e.ctex"
+uid="uid://bgo0canbpyg8b"
+path="res://.godot/imported/Bahçe arkaplan.png-a0e9393b2cb9c4661768d711a790fad8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/içkale zemin.png"
-dest_files=["res://.godot/imported/içkale zemin.png-b715d4a70ca77ad2f321b1d195ff827e.ctex"]
+source_file="res://Sprites/Bahçe arkaplan.png"
+dest_files=["res://.godot/imported/Bahçe arkaplan.png-a0e9393b2cb9c4661768d711a790fad8.ctex"]
 
 [params]
 

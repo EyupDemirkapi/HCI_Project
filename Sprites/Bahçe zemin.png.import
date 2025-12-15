@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtbfphwxpdnt6"
-path="res://.godot/imported/Background_Sprite.png-f463f7531b28a0cb62aa5220a2e2cf8d.ctex"
+uid="uid://b4aei3sqpcmow"
+path="res://.godot/imported/Bahçe zemin.png-ff15aba0845a7c30924cf2d3397c558d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Background_Sprite.png"
-dest_files=["res://.godot/imported/Background_Sprite.png-f463f7531b28a0cb62aa5220a2e2cf8d.ctex"]
+source_file="res://Sprites/Bahçe zemin.png"
+dest_files=["res://.godot/imported/Bahçe zemin.png-ff15aba0845a7c30924cf2d3397c558d.ctex"]
 
 [params]
 
