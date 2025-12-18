@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://dg7ntxppviwx6"]
+[gd_scene load_steps=2 format=3 uid="uid://dg7ntxppviwx6"]
+
+[ext_resource type="Script" uid="uid://lu45y3y8cvan" path="res://Scripts/KillZoneStats.gd" id="1_1yg0r"]
 
 [node name="KillZone" type="Node2D"]
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("1_1yg0r")
