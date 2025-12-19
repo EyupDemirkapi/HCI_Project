@@ -28,4 +28,4 @@ func _draw() -> void:
 		for i in range(-start,LIGHT_LENGTH):
 			tex.set_size_override(Vector2(13+(i+start)/2,22))
 			var worldPos = tilemap.map_to_local(vec) + Vector2(-8-(i+start)/4,i)
-			draw_texture(tex,worldPos,Color(1,1,1,0.1))
+			draw_texture(tex,worldPos,Color(1,1,1,0.033))#-((i+start)/(LIGHT_LENGTH+start))*0.033))
