@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dtbfphwxpdnt6" path="res://Sprites/arkaplan.png" id="7_3so38"]
 [ext_resource type="PackedScene" uid="uid://cba3bk3l05b3f" path="res://Scenes/Camera.tscn" id="7_fgofq"]
 [ext_resource type="Texture2D" uid="uid://bgo0canbpyg8b" path="res://Sprites/Bahçe arkaplan.png" id="7_wxwew"]
-[ext_resource type="PackedScene" uid="uid://uashcoev36bo" path="res://Scenes/HurtArea.tscn" id="8_2irst"]
+[ext_resource type="PackedScene" path="res://Scenes/HurtArea.tscn" id="8_2irst"]
 [ext_resource type="PackedScene" uid="uid://dg7ntxppviwx6" path="res://Scenes/KillZone.tscn" id="8_bf53h"]
 [ext_resource type="Script" uid="uid://lu45y3y8cvan" path="res://Scripts/KillZoneStats.gd" id="9_71axn"]
 [ext_resource type="PackedScene" uid="uid://b0lhdboocytme" path="res://Scenes/NoLightArea.tscn" id="9_alh3a"]
@@ -639,6 +639,7 @@ texture = ExtResource("11_4q8tf")
 1:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_8r6kd"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_x3xnh")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cx6b"]
@@ -777,6 +778,9 @@ layer_0/tile_data = PackedInt32Array(-196629, 0, 0, -131093, 0, 0, -65557, 0, 0,
 z_index = 1
 position = Vector2(1, 1)
 script = ExtResource("10_x3xnh")
+
+[node name="LightArea" parent="Modulate/InteriorTileMap/BgTileMap" instance=ExtResource("6_3cx6b")]
+position = Vector2(1, 1)
 
 [node name="CloudsTileMap" type="TileMap" parent="Modulate"]
 z_index = -4
