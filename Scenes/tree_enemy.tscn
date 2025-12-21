@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://dtun8dhwb3qmw"]
+[gd_scene load_steps=32 format=3 uid="uid://dtun8dhwb3qmw"]
 
 [ext_resource type="Script" uid="uid://51bftvpvo0s1" path="res://Scripts/StationaryEnemy.gd" id="1_xrvsy"]
 [ext_resource type="Texture2D" uid="uid://cipi18dmb1ros" path="res://Sprites/Tree_Enemy_sprite.png" id="2_r8pdk"]
 [ext_resource type="Script" uid="uid://cq5vqxgotrdxr" path="res://Scripts/TreeStats.gd" id="3_r8pdk"]
 [ext_resource type="PackedScene" uid="uid://uashcoev36bo" path="res://Scenes/HurtArea.tscn" id="3_rtnmu"]
+[ext_resource type="PackedScene" uid="uid://b0lhdboocytme" path="res://Scenes/NoLightArea.tscn" id="4_22mge"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep4db"]
 atlas = ExtResource("2_r8pdk")
@@ -192,6 +193,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8pdk"]
 size = Vector2(48, 54)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28372"]
+size = Vector2(50, 75)
+
 [node name="TreeEnemy" type="Node2D"]
 script = ExtResource("1_xrvsy")
 
@@ -211,6 +215,13 @@ shape = SubResource("RectangleShape2D_r8pdk")
 position = Vector2(0, -1)
 target_position = Vector2(0, 2)
 collision_mask = 0
+
+[node name="NoLightArea" parent="." instance=ExtResource("4_22mge")]
+position = Vector2(-1, -27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoLightArea"]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_28372")
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("3_r8pdk")
