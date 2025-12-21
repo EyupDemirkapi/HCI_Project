@@ -1,5 +1,6 @@
 extends Node
 const STRENGTH = 1000
+const IS_ENEMY = false
 #killzone kullanılmayacak statlar
 
 const SPEED = 0

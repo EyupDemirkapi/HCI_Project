@@ -2,6 +2,7 @@ extends Node2D
 
 const LEVEL_LIMIT = 120
 const isStationary = true
+const IS_ENEMY = true
 
 @onready var HEALTH = $Stats.HEALTH
 @onready var STRENGTH = $Stats.STRENGTH

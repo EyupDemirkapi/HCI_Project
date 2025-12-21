@@ -120,7 +120,7 @@ func _physics_process(delta: float) -> void:
 		sprite.play("Dead")
 		if not freed:
 			xSpeed = 0
-			ySpeed = -250
+			ySpeed = -350
 			freed = true
 			$CollisionShape2D.queue_free()
 		ySpeed += 10
