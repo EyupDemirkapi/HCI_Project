@@ -2,6 +2,7 @@ extends Area2D
 
 var isAttackable = false
 @onready var player = $/root/Game/Modulate/Player
+@onready var heartGenerator = $/root/Game/Camera2D/UI/HeartUIGenerator
 
 func _physics_process(delta: float) -> void:
 	if get_parent().HEALTH > 0 and isAttackable:
@@ -13,11 +14,13 @@ func _physics_process(delta: float) -> void:
 		elif get_parent().IS_ENEMY:
 			if player.invitimer <= 0 and get_parent().attacking:
 				player.HEALTH -= get_parent().STRENGTH
+				heartGenerator.generateHearts(player.HEALTH)
 				player.knockback(player.position.x-get_parent().position.x,10.0*get_parent().STRENGTH)
 				player.invitimer = player.INVI_DURATION
 		else:
 			if player.invitimer <= 0:
 				player.HEALTH -= get_parent().STRENGTH
+				heartGenerator.generateHearts(player.HEALTH)
 				player.knockback(player.position.x-get_parent().position.x,10.0*get_parent().STRENGTH)
 				player.invitimer = player.INVI_DURATION
 

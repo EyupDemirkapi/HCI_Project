@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var DASH_DURATION = $Stats.DASH_DURATION
 @onready var JUMP_HEIGHT = $Stats.JUMP_HEIGHT
 @onready var JUMP_BUFFER = $Stats.JUMP_BUFFER
-@onready var HEALTH = $Stats.HEALTH
+@onready var HEALTH = $Stats.MAX_HEALTH
 @onready var STRENGTH = $Stats.STRENGTH
 @onready var INVI_DURATION = $Stats.INVI_DURATION
 
