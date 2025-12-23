@@ -14,6 +14,7 @@ func initialGenerate() -> void:
 		get_parent().add_child.call_deferred(heart)
 
 func generateHearts(health:int) -> void:
+	maxhealth = $/root/Game/Modulate/Player.MAX_HEALTH
 	if health < 0:
 		health = 0
 	for i in get_parent().get_children():

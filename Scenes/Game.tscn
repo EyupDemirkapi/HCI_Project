@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bfm46jyc6gku2"]
+[gd_scene load_steps=34 format=3 uid="uid://bfm46jyc6gku2"]
 
 [ext_resource type="PackedScene" uid="uid://b3gfvdnqrfvf6" path="res://Scenes/Player.tscn" id="1_kldst"]
 [ext_resource type="Texture2D" uid="uid://b4aei3sqpcmow" path="res://Sprites/Bahçe zemin.png" id="2_b2bpf"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://dmq5xmfcjo8m6" path="res://Scripts/InteriorAutoLights.gd" id="10_x3xnh"]
 [ext_resource type="Texture2D" uid="uid://df7um6tbt8xsw" path="res://Sprites/kalearkaplan.png" id="11_4q8tf"]
 [ext_resource type="PackedScene" uid="uid://dtun8dhwb3qmw" path="res://Scenes/tree_enemy.tscn" id="15_acvyw"]
+[ext_resource type="PackedScene" uid="uid://bs6ahjnq6rh6u" path="res://Scenes/HeartPickup.tscn" id="19_8r6kd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epypp"]
 texture = ExtResource("2_b2bpf")
@@ -837,3 +838,6 @@ collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone/HurtArea"]
 shape = SubResource("WorldBoundaryShape2D_bf53h")
+
+[node name="HeartPickup" parent="." instance=ExtResource("19_8r6kd")]
+position = Vector2(265, -41)
