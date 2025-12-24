@@ -24,9 +24,9 @@ func _process(delta: float) -> void:
 	elif texsizer > 18:
 		increasesize = false
 	if increasesize:
-		texsizer += delta
+		texsizer += delta*2
 	else:
-		texsizer -= delta
+		texsizer -= delta*2
 	queue_redraw()
 
 func _draw()->void:
@@ -38,8 +38,8 @@ func _draw()->void:
 			else:
 				image.set_pixel(i1,i2,Color(0.212,0.718,1.0,1-((texsizer-16)/2)))
 	tex = ImageTexture.create_from_image(image)
-	tex.set_size_override(Vector2i(texsizer,texsizer))
-	draw_texture(tex,Vector2(-texsizer/2.0,-texsizer/2.0))
+	tex.set_size_override(Vector2i(17,17))
+	draw_texture(tex,Vector2(-8.5,-8.5))
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
