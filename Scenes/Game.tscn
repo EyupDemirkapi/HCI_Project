@@ -768,7 +768,7 @@ position = Vector2(1, 121)
 shape = SubResource("WorldBoundaryShape2D_3cx6b")
 
 [node name="TreeEnemy" parent="Modulate/ExteriorTileMap" instance=ExtResource("15_acvyw")]
-position = Vector2(247, 14)
+position = Vector2(247, 16)
 
 [node name="BgTileMap2" type="TileMap" parent="Modulate/ExteriorTileMap"]
 show_behind_parent = true

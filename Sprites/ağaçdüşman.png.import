@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by5nj0jn51gax"
-path="res://.godot/imported/bombandrock1.png-ac389e96c970280143e2c7f19e63abbd.ctex"
+uid="uid://7knceyyo1r60"
+path="res://.godot/imported/ağaçdüşman.png-c444528d7ac5f7ec25ab489ca58bbeff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/bombandrock1.png"
-dest_files=["res://.godot/imported/bombandrock1.png-ac389e96c970280143e2c7f19e63abbd.ctex"]
+source_file="res://Sprites/ağaçdüşman.png"
+dest_files=["res://.godot/imported/ağaçdüşman.png-c444528d7ac5f7ec25ab489ca58bbeff.ctex"]
 
 [params]
 
