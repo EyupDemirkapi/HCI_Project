@@ -12,7 +12,10 @@ const IS_ENEMY = true
 @onready var BYPASSES_INVIS = $Stats.BYPASSES_INVIS
 @onready var AWARENESS = $Stats.AWARENESS
 @onready var ATTACKTIMER = $Stats.ATTACKTIMER
+@onready var KNOCKABLE = $Stats.KNOCKABLE
+@onready var RELOADTIMER = $Stats.RELOADTIMER
 
+var animfinished = false
 var xSpeed = 0
 var ySpeed = 0
 var direction = -1
@@ -48,9 +51,21 @@ func _physics_process(delta: float) -> void:
 		elif abs(position.x - player.position.x) <= AWARENESS:
 			if attackTimer > 0.0:
 				attackTimer -= delta
-			elif sprite.animation != "Attack":
+			elif sprite.animation == "Idle":
+				sprite.play("AttackStart")
+		if animfinished:
+			if sprite.animation == "AttackStart":
 				sprite.play("Attack")
 				attacking = true
+			elif sprite.animation == "Attack":
+				sprite.play("AttackEnd")
+				attacking = false
+			elif sprite.animation == "AttackEnd":
+				sprite.play("Idle")
+				attackTimer = RELOADTIMER
+			else:
+				sprite.play("Idle")
+			animfinished = false
 		
 		if attackTimer > 0:
 			attackTimer -= delta
@@ -59,20 +74,20 @@ func _physics_process(delta: float) -> void:
 		
 		position.x += direction * delta * xSpeed
 		
-		if not knockedBack:
-			if sprite.animation == "Hurt":
-				sprite.play("Walk")
+		if KNOCKABLE:
+			if not knockedBack:
+				if sprite.animation == "Hurt":
+					sprite.play("Walk")
 			else:
-				xSpeed = SPEED
-				if RayLeft.is_colliding() and RayLeft.get_collider() != player:
-					direction = 1
-				elif RayRight.is_colliding() and RayRight.get_collider() != player:
-					direction = -1
-		else:
-			sprite.play("Hurt")
-		
+				sprite.play("Hurt")
+		if sprite.animation != "Hurt":
+			xSpeed = SPEED
+			if RayLeft.is_colliding() and RayLeft.get_collider() != player:
+				direction = 1
+			elif RayRight.is_colliding() and RayRight.get_collider() != player:
+				direction = -1
 		if RayDown.is_colliding() and RayDown.get_collider() != player:
-			if sprite.animation == "Hurt" and sprite.frame > 0:
+			if sprite.animation == "Hurt" and sprite.frame > 0 and KNOCKABLE:
 				knockedBack = false
 			if ySpeed >= 0:
 				ySpeed = 0
@@ -102,7 +117,4 @@ func knockback(playerPos,strength) -> void:
 		ySpeed = -25 * strength
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if sprite.animation == "Attack":
-		attackTimer = ATTACKTIMER
-		attacking = false
-		sprite.play("Idle")
+	animfinished = true

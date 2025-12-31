@@ -9,3 +9,5 @@ const MASS = 1.5
 const BYPASSES_INVIS = false
 const AWARENESS = 0.0
 const ATTACKTIMER = 1.0
+const KNOCKABLE = true
+const RELOADTIMER = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dtun8dhwb3qmw"]
+[gd_scene load_steps=32 format=3 uid="uid://dtun8dhwb3qmw"]
 
 [ext_resource type="Script" uid="uid://51bftvpvo0s1" path="res://Scripts/StationaryEnemy.gd" id="1_xrvsy"]
 [ext_resource type="Texture2D" uid="uid://7knceyyo1r60" path="res://Sprites/ağaçdüşman.png" id="2_22mge"]
@@ -82,8 +82,17 @@ region = Rect2(816, 0, 48, 64)
 atlas = ExtResource("2_22mge")
 region = Rect2(864, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0f6no"]
-region = Rect2(448, 224, 112, 112)
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4h3u"]
+atlas = ExtResource("2_22mge")
+region = Rect2(624, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyx67"]
+atlas = ExtResource("2_22mge")
+region = Rect2(672, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0mpr"]
+atlas = ExtResource("2_22mge")
+region = Rect2(720, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22mge"]
 atlas = ExtResource("2_22mge")
@@ -170,10 +179,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0f6no")
+"texture": SubResource("AtlasTexture_q4h3u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0f6no")
+"texture": SubResource("AtlasTexture_nyx67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0mpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyx67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4h3u")
 }],
 "loop": false,
 "name": &"Hurt",
@@ -200,8 +218,10 @@ script = ExtResource("1_xrvsy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_rwhvo")
-animation = &"Dead"
+animation = &"Hurt"
 autoplay = "Idle"
+frame = 4
+frame_progress = 1.0
 
 [node name="HurtArea" parent="." instance=ExtResource("3_rtnmu")]
 

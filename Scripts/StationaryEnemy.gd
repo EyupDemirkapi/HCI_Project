@@ -11,6 +11,8 @@ const IS_ENEMY = true
 @onready var BYPASSES_INVIS = $Stats.BYPASSES_INVIS
 @onready var AWARENESS = $Stats.AWARENESS
 @onready var ATTACKTIMER = $Stats.ATTACKTIMER
+@onready var KNOCKABLE = $Stats.KNOCKABLE
+@onready var RELOADTIMER = $Stats.RELOADTIMER
 
 var animfinished = false
 var ySpeed = 0
@@ -50,7 +52,9 @@ func _physics_process(delta: float) -> void:
 			elif sprite.animation == "Attack":
 				sprite.play("AttackEnd")
 				attacking = false
-				attackTimer = ATTACKTIMER
+			elif sprite.animation == "AttackEnd":
+				sprite.play("Idle")
+				attackTimer = RELOADTIMER
 			else:
 				sprite.play("Idle")
 			animfinished = false
@@ -58,19 +62,24 @@ func _physics_process(delta: float) -> void:
 		if invitimer > 0:
 			invitimer -= delta
 		
-		if not knockedBack:
-			if sprite.animation == "Hurt":
-				sprite.play("Idle")
-		else:
+		if KNOCKABLE:
+			if not knockedBack:
+				if sprite.animation == "Hurt":
+					sprite.play("Idle")
+			else:
+				sprite.play("Hurt")
+		elif knockedBack:
 			sprite.play("Hurt")
+			knockedBack = false
 		
 		if RayDown.is_colliding() and RayDown.get_collider() != player:
-			if sprite.animation == "Hurt" and sprite.frame > 0:
+			if sprite.animation == "Hurt" and sprite.frame > 0 and KNOCKABLE:
 				knockedBack = false
 			if ySpeed >= 0:
 				ySpeed = 0
 		else:
 			ySpeed += 10
+		position.y += delta * ySpeed
 		
 	else:
 		if sprite.animation != "Dead":
