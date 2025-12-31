@@ -79,18 +79,18 @@ func _physics_process(delta: float) -> void:
 				ySpeed = 0
 		else:
 			ySpeed += 10
-		position.y += delta * ySpeed
 		
 	else:
 		if sprite.animation != "Dead":
 			if $NoLightArea != null:
 				$NoLightArea.queue_free()
 			sprite.play("Dead")
+	position.y += delta * ySpeed
 
 func knockback(playerPos,strength) -> void:
 	if HEALTH > 0:
 		knockedBack = true
-		ySpeed = -25 * strength
+		ySpeed = -25 * strength * int(KNOCKABLE)
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
