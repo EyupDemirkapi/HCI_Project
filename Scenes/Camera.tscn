@@ -1,9 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://cba3bk3l05b3f"]
+[gd_scene load_steps=8 format=3 uid="uid://cba3bk3l05b3f"]
 
 [ext_resource type="Script" uid="uid://20o42ts6rb8w" path="res://Scripts/Sky.gd" id="1_tsbx5"]
 [ext_resource type="Texture2D" uid="uid://xocaa6b4ccca" path="res://Sprites/ay.png" id="2_acvpo"]
 [ext_resource type="Texture2D" uid="uid://c0a3210rfes0n" path="res://Sprites/güneş.png" id="3_tj2bt"]
 [ext_resource type="Script" uid="uid://c5icd7pc5sonr" path="res://Scripts/HeartGenerate.gd" id="4_acvpo"]
+[ext_resource type="Texture2D" uid="uid://dtbfphwxpdnt6" path="res://Sprites/arkaplan.png" id="5_iu14u"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iu14u"]
+texture = ExtResource("5_iu14u")
+5:0/0 = 0
+5:0/0/probability = 0.1
+5:1/0 = 0
+5:1/0/probability = 0.1
+0:2/0 = 0
+0:2/0/probability = 0.1
+1:2/0 = 0
+1:2/0/probability = 0.1
+2:2/0 = 0
+2:2/0/probability = 0.1
+3:2/0 = 0
+3:2/0/probability = 0.1
+4:2/0 = 0
+4:2/0/probability = 0.1
+
+[sub_resource type="TileSet" id="TileSet_uey14"]
+sources/0 = SubResource("TileSetAtlasSource_iu14u")
 
 [node name="Camera2D" type="Camera2D"]
 z_index = -5
@@ -25,3 +46,10 @@ z_index = 10
 
 [node name="HeartUIGenerator" type="Node" parent="UI"]
 script = ExtResource("4_acvpo")
+
+[node name="StarsTileMap" type="TileMap" parent="."]
+z_index = -5
+z_as_relative = false
+tile_set = SubResource("TileSet_uey14")
+format = 2
+layer_0/tile_data = PackedInt32Array(131061, 196608, 2, -393226, 327680, 1, -262153, 131072, 2, -196614, 196608, 2, 262139, 131072, 2, 327678, 131072, 2, 131072, 0, 2, 327685, 327680, 0, 8, 327680, 0, -458743, 327680, 0, -65537, 0, 2, -262140, 327680, 0, -131065, 327680, 0, -327670, 0, 2)
