@@ -12,6 +12,7 @@ const IS_ENEMY = true
 @onready var AWARENESS = $Stats.AWARENESS
 @onready var ATTACKTIMER = $Stats.ATTACKTIMER
 
+var animfinished = false
 var ySpeed = 0
 var invitimer = 0
 var knockedBack = false
@@ -40,9 +41,19 @@ func _physics_process(delta: float) -> void:
 		elif abs(position.x - player.position.x) <= AWARENESS:
 			if attackTimer > 0.0:
 				attackTimer -= delta
-			elif sprite.animation != "Attack":
+			elif sprite.animation == "Idle":
+				sprite.play("AttackStart")
+		if animfinished:
+			if sprite.animation == "AttackStart":
 				sprite.play("Attack")
 				attacking = true
+			elif sprite.animation == "Attack":
+				sprite.play("AttackEnd")
+				attacking = false
+				attackTimer = ATTACKTIMER
+			else:
+				sprite.play("Idle")
+			animfinished = false
 		
 		if invitimer > 0:
 			invitimer -= delta
@@ -63,12 +74,9 @@ func _physics_process(delta: float) -> void:
 		
 	else:
 		if sprite.animation != "Dead":
+			if $NoLightArea != null:
+				$NoLightArea.queue_free()
 			sprite.play("Dead")
-		if not freed:
-			ySpeed = -250
-			freed = true
-		ySpeed += 10
-	position.y += delta * ySpeed
 
 func knockback(playerPos,strength) -> void:
 	if HEALTH > 0:
@@ -77,7 +85,4 @@ func knockback(playerPos,strength) -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if sprite.animation == "Attack":
-		attackTimer = ATTACKTIMER
-		attacking = false
-		sprite.play("Idle")
+	animfinished = true
