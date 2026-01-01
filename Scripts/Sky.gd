@@ -11,6 +11,7 @@ var daytimer = 0
 
 @onready var moon = $Moon
 @onready var sun = $Sun
+@onready var stars = $StarsTileMap
 @onready var player = $/root/Game/Modulate/Player
 @onready var modulateIngame = $/root/Game/Modulate
 
@@ -34,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	#ayla güneşin alfasını hesaplamak için
 	#alphatimer = ((daytimer*0.5 - 0.5)**8)*-(2.0**8) + 1
 	#alphatimer = sin((daytimer-0.5)*PI)/2 + 0.5
-	alphatimer = 2*((daytimer/2)-(sin(2*PI*daytimer))/(4*PI))
+	alphatimer = 2.0*((daytimer/2.0)-(sin(2.0*PI*daytimer))/(4.0*PI))
 	#gün gece geçişi
 	if color.r <= nightcolor.r:
 		dayTransition(true)
@@ -44,6 +45,7 @@ func _physics_process(delta: float) -> void:
 		sun.position.x *= -1
 		moon.position.x *= -1
 	moon.modulate.a = lerp(1,0,alphatimer)
+	stars.modulate.a = lerp(1,0,alphatimer)
 	sun.modulate.a = lerp(0,1,alphatimer)
 	modulateIngame.modulate = lerp(Color.DIM_GRAY,Color.WHITE,daytimer)
 	

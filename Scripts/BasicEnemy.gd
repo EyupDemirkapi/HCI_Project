@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 		elif abs(position.x - player.position.x) <= AWARENESS:
 			if attackTimer > 0.0:
 				attackTimer -= delta
-			elif sprite.animation == "Idle":
+			elif sprite.animation == "Walk":
 				sprite.play("AttackStart")
 		if animfinished:
 			if sprite.animation == "AttackStart":
@@ -61,10 +61,10 @@ func _physics_process(delta: float) -> void:
 				sprite.play("AttackEnd")
 				attacking = false
 			elif sprite.animation == "AttackEnd":
-				sprite.play("Idle")
+				sprite.play("Walk")
 				attackTimer = RELOADTIMER
 			else:
-				sprite.play("Idle")
+				sprite.play("Walk")
 			animfinished = false
 		
 		if attackTimer > 0:
@@ -80,6 +80,9 @@ func _physics_process(delta: float) -> void:
 					sprite.play("Walk")
 			else:
 				sprite.play("Hurt")
+		elif knockedBack:
+			sprite.play("Hurt")
+			knockedBack = false
 		if sprite.animation != "Hurt":
 			xSpeed = SPEED
 			if RayLeft.is_colliding() and RayLeft.get_collider() != player:
@@ -113,8 +116,8 @@ func _physics_process(delta: float) -> void:
 func knockback(playerPos,strength) -> void:
 	if HEALTH > 0:
 		knockedBack = true
-		xSpeed = playerPos * strength
-		ySpeed = -25 * strength
+		xSpeed = playerPos * strength * int(KNOCKABLE)
+		ySpeed = -25 * strength * int(KNOCKABLE)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	animfinished = true
