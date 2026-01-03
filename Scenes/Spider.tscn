@@ -111,7 +111,7 @@ script = ExtResource("1_cgp8y")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_o58ds")
-animation = &"Dead"
+animation = &"Hurt"
 autoplay = "Walk"
 
 [node name="HurtArea" parent="." instance=ExtResource("3_hrc5k")]

@@ -11,6 +11,8 @@ var daytimer = 0
 
 @onready var moon = $Moon
 @onready var sun = $Sun
+@onready var heartGenerator = $UI/HeartUIGenerator
+@onready var stars = $StarsTileMap
 @onready var player = $/root/Game/Modulate/Player
 @onready var modulateIngame = $/root/Game/Modulate
 
@@ -22,6 +24,8 @@ var alphatimer
 const CAMERA_BOT_LIMIT = 0.0
 const CAMERA_TOP_LIMIT = -100.0
 
+func _ready() -> void:
+	get_viewport().connect("size_changed",screen_size_change)
 
 func _physics_process(delta: float) -> void:
 	#W$Label.text = "Alpha Timer: {0}\nDay timer: {1}".format([alphatimer,daytimer])
@@ -30,11 +34,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		position = ParallaxDisplay.ParallaxMethodVector(self,player.position)
 	#arkaplan boyutu
-	rect = Rect2(DisplayServer.screen_get_position() - DisplayServer.screen_get_size()/2,DisplayServer.screen_get_size())
+	if get_viewport_rect().size.x / 1152.0 > get_viewport_rect().size.y / 648:
+		zoom = Vector2.ONE * 3.0 * get_viewport_rect().size.y / 648.0
+	elif get_viewport_rect().size.x / 1152.0 < get_viewport_rect().size.y / 648:
+		zoom = Vector2.ONE * 3.0 * get_viewport_rect().size.x / 1152.0
+	rect = Rect2(-get_viewport_rect().size/(2.0*zoom),get_viewport_rect().size/zoom)
 	#ayla güneşin alfasını hesaplamak için
 	#alphatimer = ((daytimer*0.5 - 0.5)**8)*-(2.0**8) + 1
 	#alphatimer = sin((daytimer-0.5)*PI)/2 + 0.5
-	alphatimer = 2*((daytimer/2)-(sin(2*PI*daytimer))/(4*PI))
+	alphatimer = 2.0*((daytimer/2.0)-(sin(2.0*PI*daytimer))/(4.0*PI))
 	#gün gece geçişi
 	if color.r <= nightcolor.r:
 		dayTransition(true)
@@ -44,6 +52,7 @@ func _physics_process(delta: float) -> void:
 		sun.position.x *= -1
 		moon.position.x *= -1
 	moon.modulate.a = lerp(1,0,alphatimer)
+	stars.modulate.a = lerp(1,0,alphatimer)
 	sun.modulate.a = lerp(0,1,alphatimer)
 	modulateIngame.modulate = lerp(Color.DIM_GRAY,Color.WHITE,daytimer)
 	
@@ -61,3 +70,7 @@ func dayProgress(isDay,delta) -> void:
 	sun.position.y = lerp(YVALUE,-YVALUE,alphatimer)
 	color = lerp(nightcolor,daycolor,daytimer)
 	daytimer += (2*int(isDay) - 1)*delta/ DAYLENGTH
+	
+func screen_size_change()->void:
+	heartGenerator.startPos = Vector2(-174 * get_viewport_rect().size.x / (1152.0 * zoom.x/3.0),-90 * get_viewport_rect().size.y / (648.0 * zoom.y/3.0))
+	heartGenerator.generateHearts(player.HEALTH)
