@@ -5,7 +5,7 @@ var startPos = Vector2(-174,-90)
 
 func _ready() -> void:
 	initialGenerate()
-
+	
 func initialGenerate() -> void:
 	for i in range(maxhealth-1,-1,-1):
 		var heart = load("res://Scenes/UIHeart.tscn").instantiate()
