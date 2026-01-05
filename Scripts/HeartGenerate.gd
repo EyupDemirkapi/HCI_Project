@@ -1,7 +1,7 @@
 extends Node
 
 @onready var maxhealth = $/root/Game/Modulate/Player/Stats.MAX_HEALTH
-var startPos = Vector2(-174,-90)
+var startPos = Vector2(19,19)
 
 func _ready() -> void:
 	initialGenerate()

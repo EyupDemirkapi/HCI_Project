@@ -23,7 +23,6 @@ var alphatimer
 const CAMERA_BOT_LIMIT = 0.0
 const CAMERA_TOP_LIMIT = -100.0
 
-
 func _physics_process(delta: float) -> void:
 	#W$Label.text = "Alpha Timer: {0}\nDay timer: {1}".format([alphatimer,daytimer])
 	if player.position.y >= CAMERA_BOT_LIMIT or player.position.y <= CAMERA_TOP_LIMIT:
@@ -31,7 +30,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		position = ParallaxDisplay.ParallaxMethodVector(self,player.position)
 	#arkaplan boyutu
-	rect = Rect2(DisplayServer.screen_get_position() - DisplayServer.screen_get_size()/2,DisplayServer.screen_get_size())
+	if get_viewport_rect().size.x / 1152.0 > get_viewport_rect().size.y / 648:
+		zoom = Vector2.ONE * 3.0 * get_viewport_rect().size.y / 648.0
+	elif get_viewport_rect().size.x / 1152.0 < get_viewport_rect().size.y / 648:
+		zoom = Vector2.ONE * 3.0 * get_viewport_rect().size.x / 1152.0
+	rect = Rect2(-get_viewport_rect().size/(2.0*zoom),get_viewport_rect().size/zoom)
 	#ayla güneşin alfasını hesaplamak için
 	#alphatimer = ((daytimer*0.5 - 0.5)**8)*-(2.0**8) + 1
 	#alphatimer = sin((daytimer-0.5)*PI)/2 + 0.5

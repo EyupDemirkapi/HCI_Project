@@ -6,7 +6,7 @@ extends Node2D
 @onready var SCORE_UP = $Stats.SCORE_UP
 
 @onready var player = $/root/Game/Modulate/Player
-@onready var heartGenerator = $/root/Game/Camera2D/UI/HeartUIGenerator
+@onready var heartGenerator = $/root/Game/Camera2D/UI/TopLeft/HeartUIGenerator
 
 var image:Image
 var tex:ImageTexture

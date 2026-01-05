@@ -2,7 +2,7 @@ extends Area2D
 
 var isAttackable = false
 @onready var player = $/root/Game/Modulate/Player
-@onready var heartGenerator = $/root/Game/Camera2D/UI/HeartUIGenerator
+@onready var heartGenerator = $/root/Game/Camera2D/UI/TopLeft/HeartUIGenerator
 
 func _physics_process(delta: float) -> void:
 	if get_parent().HEALTH > 0 and isAttackable:
