@@ -34,6 +34,8 @@ func _physics_process(delta: float) -> void:
 		zoom = Vector2.ONE * 3.0 * get_viewport_rect().size.y / 648.0
 	elif get_viewport_rect().size.x / 1152.0 < get_viewport_rect().size.y / 648:
 		zoom = Vector2.ONE * 3.0 * get_viewport_rect().size.x / 1152.0
+	else:
+		zoom = Vector2.ONE * 3.0 * get_viewport_rect().size / Vector2(1152.0,648.0)
 	rect = Rect2(-get_viewport_rect().size/(2.0*zoom),get_viewport_rect().size/zoom)
 	#ayla güneşin alfasını hesaplamak için
 	#alphatimer = ((daytimer*0.5 - 0.5)**8)*-(2.0**8) + 1
