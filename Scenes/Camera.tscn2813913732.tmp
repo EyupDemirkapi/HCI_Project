@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cba3bk3l05b3f"]
+[gd_scene load_steps=10 format=3 uid="uid://cba3bk3l05b3f"]
 
 [ext_resource type="Script" uid="uid://20o42ts6rb8w" path="res://Scripts/Sky.gd" id="1_tsbx5"]
 [ext_resource type="Texture2D" uid="uid://xocaa6b4ccca" path="res://Sprites/ay.png" id="2_acvpo"]
@@ -27,8 +27,6 @@ texture = ExtResource("5_iu14u")
 
 [sub_resource type="TileSet" id="TileSet_uey14"]
 sources/0 = SubResource("TileSetAtlasSource_iu14u")
-
-[sub_resource type="LabelSettings" id="LabelSettings_uey14"]
 
 [node name="Camera2D" type="Camera2D"]
 z_index = -5
@@ -61,21 +59,19 @@ z_index = 10
 [node name="HeartUIGenerator" type="Node" parent="UI/TopLeft"]
 script = ExtResource("4_acvpo")
 
+[node name="ScoreText" type="Label" parent="UI/TopLeft"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 80.0
+offset_bottom = 25.0
+text = "Score: xxx"
+script = ExtResource("7_uey14")
+
 [node name="TopRight" type="Node2D" parent="UI"]
 z_index = 10
 
 [node name="BottomLeft" type="Node2D" parent="UI"]
 z_index = 10
-
-[node name="ScoreText" type="Label" parent="UI/BottomLeft"]
-offset_left = 3.0
-offset_top = -26.0
-offset_right = 81.0
-offset_bottom = -3.0
-text = "Score: xxx"
-label_settings = SubResource("LabelSettings_uey14")
-vertical_alignment = 1
-script = ExtResource("7_uey14")
 
 [node name="BottomRight" type="Node2D" parent="UI"]
 z_index = 10

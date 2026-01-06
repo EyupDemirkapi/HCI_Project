@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var STRENGTH = $Stats.STRENGTH
 @onready var INVI_DURATION = $Stats.INVI_DURATION
 @onready var KEYS = $Stats.KEYS
+@onready var SCORE = $Stats.SCORE
 
 var walkfinished = true
 var jumpfinished = true

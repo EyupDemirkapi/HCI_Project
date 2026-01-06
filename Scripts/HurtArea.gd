@@ -8,6 +8,7 @@ func _physics_process(delta: float) -> void:
 	if get_parent().HEALTH > 0 and isAttackable:
 		if not get_parent().BYPASSES_INVIS and (player.sprite.animation == "AttackStart" or player.sprite.animation == "AttackLoop" or player.sprite.animation == "AttackEnd"):
 			if get_parent().invitimer <= 0:
+				player.SCORE += 50
 				get_parent().HEALTH -= player.STRENGTH
 				get_parent().invitimer = get_parent().INVI_DURATION
 				get_parent().knockback(player.position.x-get_parent().position.x,10.0/get_parent().MASS)

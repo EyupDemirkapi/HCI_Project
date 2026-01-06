@@ -53,6 +53,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			heartGenerator.generateHearts(player.HEALTH)
 		player.STRENGTH += STRENGTH_UP
 		player.KEYS += KEYS_UP
-		#player.SCORE += SCORE_UP
+		player.SCORE += SCORE_UP
 		
 		queue_free()
