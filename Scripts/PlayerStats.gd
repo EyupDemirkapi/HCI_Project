@@ -9,3 +9,4 @@ var JUMP_BUFFER = 0.2
 var MAX_HEALTH = 5
 var STRENGTH = 1
 var INVI_DURATION = 1
+var KEYS = 0

@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var HEALTH = $Stats.MAX_HEALTH
 @onready var STRENGTH = $Stats.STRENGTH
 @onready var INVI_DURATION = $Stats.INVI_DURATION
+@onready var KEYS = $Stats.KEYS
 
 var walkfinished = true
 var jumpfinished = true

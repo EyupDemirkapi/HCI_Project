@@ -34,9 +34,12 @@ var attackTimer = ATTACKTIMER
 
 func _ready() -> void:
 	attackTimer = ATTACKTIMER
+	
 	RayLeft.set_collision_mask_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),true)
 	RayRight.set_collision_mask_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),true)
 	RayDown.set_collision_mask_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),true)
+	
+	hurtArea.set_collision_layer_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),true)
 	hurtArea.set_collision_mask_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

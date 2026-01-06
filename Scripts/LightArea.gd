@@ -5,7 +5,7 @@ var lightTimer = 0.0
 @onready var player = $/root/Game/Modulate/Player
 @onready var moon = $/root/Game/Camera2D/Moon
 @onready var sun = $/root/Game/Camera2D/Sun
-@onready var heartGenerator = $/root/Game/Camera2D/UI/HeartUIGenerator
+@onready var heartGenerator = $/root/Game/Camera2D/UI/TopLeft/HeartUIGenerator
 
 func _ready() -> void:
 	set_collision_layer_value(get_parent().get_tileset().get_physics_layer_collision_mask(0),true)
