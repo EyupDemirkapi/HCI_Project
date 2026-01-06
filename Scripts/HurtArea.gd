@@ -14,12 +14,14 @@ func _physics_process(delta: float) -> void:
 				get_parent().knockback(player.position.x-get_parent().position.x,10.0/get_parent().MASS)
 		elif get_parent().IS_ENEMY:
 			if player.invitimer <= 0 and get_parent().attacking:
+				player.SCORE -= 50
 				player.HEALTH -= get_parent().STRENGTH
 				heartGenerator.generateHearts(player.HEALTH)
 				player.knockback(player.position.x-get_parent().position.x,10.0*get_parent().STRENGTH)
 				player.invitimer = player.INVI_DURATION
 		else:
 			if player.invitimer <= 0:
+				player.SCORE -= 50
 				player.HEALTH -= get_parent().STRENGTH
 				heartGenerator.generateHearts(player.HEALTH)
 				player.knockback(player.position.x-get_parent().position.x,10.0*get_parent().STRENGTH)

@@ -34,6 +34,8 @@ var jumpBuffer = 0
 var attackTimer = 0
 
 func _physics_process(delta: float) -> void:
+	if SCORE < 0:
+		SCORE = 0
 	#$Label.text = "X velocity: "+str(velocity.x) + "\nY velocity: " + str(velocity.y)	
 	#$Label.text = str(HEALTH)
 	#saldırma
