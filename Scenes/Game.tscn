@@ -923,7 +923,6 @@ position = Vector2(645, -136)
 position = Vector2(2408, -375)
 
 [node name="InteriorTileMap" type="TileMap" parent="Modulate"]
-visible = false
 z_as_relative = false
 tile_set = SubResource("TileSet_q6r6c")
 format = 2
