@@ -922,6 +922,15 @@ position = Vector2(645, -136)
 [node name="GemPickup2" parent="Modulate/ExteriorTileMap" instance=ExtResource("15_raj38")]
 position = Vector2(2408, -375)
 
+[node name="BigCoinPickup5" parent="Modulate/ExteriorTileMap" instance=ExtResource("16_8e0uq")]
+position = Vector2(2168, -168)
+
+[node name="BigCoinPickup6" parent="Modulate/ExteriorTileMap" instance=ExtResource("16_8e0uq")]
+position = Vector2(2140, -193)
+
+[node name="BigCoinPickup7" parent="Modulate/ExteriorTileMap" instance=ExtResource("16_8e0uq")]
+position = Vector2(2197, -193)
+
 [node name="InteriorTileMap" type="TileMap" parent="Modulate"]
 z_as_relative = false
 tile_set = SubResource("TileSet_q6r6c")
@@ -1059,12 +1068,3 @@ collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone/HurtArea"]
 shape = SubResource("WorldBoundaryShape2D_bf53h")
-
-[node name="BigCoinPickup" parent="." instance=ExtResource("16_8e0uq")]
-position = Vector2(2168, -168)
-
-[node name="BigCoinPickup2" parent="." instance=ExtResource("16_8e0uq")]
-position = Vector2(2140, -193)
-
-[node name="BigCoinPickup3" parent="." instance=ExtResource("16_8e0uq")]
-position = Vector2(2197, -193)
