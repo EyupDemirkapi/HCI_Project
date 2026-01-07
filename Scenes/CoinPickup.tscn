@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://bi3dg2axjnhp8"]
+
+[ext_resource type="Script" uid="uid://f3534cpfya7q" path="res://Scripts/Pickup.gd" id="1_bnj7k"]
+[ext_resource type="Texture2D" uid="uid://dkbtd2058v43b" path="res://Sprites/coin.png" id="2_bnj7k"]
+[ext_resource type="Script" uid="uid://dk5tfh38kbwan" path="res://Scripts/CoinStats.gd" id="3_bnj7k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nhj2"]
+atlas = ExtResource("2_bnj7k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0apn"]
+atlas = ExtResource("2_bnj7k")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wys08"]
+atlas = ExtResource("2_bnj7k")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a52ms"]
+atlas = ExtResource("2_bnj7k")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_548q3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nhj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0apn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wys08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a52ms")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8jfg"]
+size = Vector2(16, 16)
+
+[node name="CoinPickup" type="Node2D"]
+show_behind_parent = true
+position = Vector2(0, -8)
+script = ExtResource("1_bnj7k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_548q3")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_r8jfg")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_bnj7k")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
