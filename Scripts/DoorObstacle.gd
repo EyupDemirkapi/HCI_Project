@@ -3,6 +3,7 @@ extends RigidBody2D
 
 @onready var player = $/root/Game/Modulate/Player
 @onready var area = $Area2D
+@onready var keyGenerator = $/root/Game/Camera2D/UI/TopLeft/KeyUIGenerator
 
 func _ready() -> void:
 	set_collision_layer_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),true)
@@ -18,3 +19,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		area.set_collision_layer_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),false)
 		area.set_collision_mask_value(get_parent().get_tileset().get_physics_layer_collision_layer(0),false)
 		player.KEYS -= 1
+		keyGenerator.generateKeys(player.KEYS)

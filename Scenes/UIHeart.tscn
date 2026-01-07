@@ -116,4 +116,3 @@ animations = [{
 [node name="UIHeart" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ddx64")
 animation = &"Empty"
-frame_progress = 0.67293704

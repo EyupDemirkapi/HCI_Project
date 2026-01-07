@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cba3bk3l05b3f"]
+[gd_scene load_steps=14 format=3 uid="uid://cba3bk3l05b3f"]
 
 [ext_resource type="Script" uid="uid://20o42ts6rb8w" path="res://Scripts/Sky.gd" id="1_tsbx5"]
 [ext_resource type="Texture2D" uid="uid://xocaa6b4ccca" path="res://Sprites/ay.png" id="2_acvpo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dtbfphwxpdnt6" path="res://Sprites/arkaplan.png" id="5_iu14u"]
 [ext_resource type="Script" uid="uid://cpptk5xdsgp4o" path="res://Scripts/UICorners.gd" id="5_uey14"]
 [ext_resource type="FontFile" uid="uid://brnloiunq5yiv" path="res://Sprites/reffspixelfont_spritesheet_0_to_1023.png" id="7_8kc7d"]
+[ext_resource type="Script" uid="uid://ca6gd86fbhe24" path="res://Scripts/KeyGenerate.gd" id="7_s75lh"]
 [ext_resource type="Script" uid="uid://buyi45kj36cp8" path="res://Scripts/ScoreText.gd" id="7_uey14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iu14u"]
@@ -66,6 +67,9 @@ z_index = 10
 
 [node name="HeartUIGenerator" type="Node" parent="UI/TopLeft"]
 script = ExtResource("4_acvpo")
+
+[node name="KeyUIGenerator" type="Node" parent="UI/TopLeft"]
+script = ExtResource("7_s75lh")
 
 [node name="TopRight" type="Node2D" parent="UI"]
 z_index = 10

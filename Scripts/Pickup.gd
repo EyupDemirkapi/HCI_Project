@@ -8,6 +8,7 @@ extends Node2D
 
 @onready var player = $/root/Game/Modulate/Player
 @onready var heartGenerator = $/root/Game/Camera2D/UI/TopLeft/HeartUIGenerator
+@onready var keyGenerator = $/root/Game/Camera2D/UI/TopLeft/KeyUIGenerator
 
 var image:Image
 var tex:ImageTexture
@@ -49,10 +50,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player.MAX_HEALTH += MAX_HEALTH_UP
 		if player.HEALTH > player.MAX_HEALTH:
 			player.HEALTH = player.MAX_HEALTH
-		if HEALTH_UP > 0 or MAX_HEALTH_UP > 0:
-			heartGenerator.generateHearts(player.HEALTH)
 		player.STRENGTH += STRENGTH_UP
 		player.KEYS += KEYS_UP
 		player.SCORE += SCORE_UP
+		if HEALTH_UP > 0 or MAX_HEALTH_UP > 0:
+			heartGenerator.generateHearts(player.HEALTH)
+		if KEYS_UP > 0:
+			keyGenerator.generateKeys(player.KEYS)
 		
 		queue_free()
