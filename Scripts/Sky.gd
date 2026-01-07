@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	moon.modulate.a = lerp(1,0,alphatimer)
 	stars.modulate.a = lerp(1,0,alphatimer)
 	sun.modulate.a = lerp(0,1,alphatimer)
-	modulateIngame.modulate = lerp(Color.DIM_GRAY,Color.WHITE,daytimer)
+	modulateIngame.modulate = lerp(Color.DIM_GRAY*1.25,Color.WHITE*1.25,daytimer)
 	
 	dayProgress(not day,delta)
 	queue_redraw()

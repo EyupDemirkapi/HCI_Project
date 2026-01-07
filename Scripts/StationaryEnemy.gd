@@ -69,6 +69,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				sprite.play("Hurt")
 		elif knockedBack:
+			ySpeed = 0
 			sprite.play("Hurt")
 			knockedBack = false
 		
