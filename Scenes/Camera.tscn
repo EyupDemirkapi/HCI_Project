@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cba3bk3l05b3f"]
+[gd_scene load_steps=13 format=3 uid="uid://cba3bk3l05b3f"]
 
 [ext_resource type="Script" uid="uid://20o42ts6rb8w" path="res://Scripts/Sky.gd" id="1_tsbx5"]
 [ext_resource type="Texture2D" uid="uid://xocaa6b4ccca" path="res://Sprites/ay.png" id="2_acvpo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c5icd7pc5sonr" path="res://Scripts/HeartGenerate.gd" id="4_acvpo"]
 [ext_resource type="Texture2D" uid="uid://dtbfphwxpdnt6" path="res://Sprites/arkaplan.png" id="5_iu14u"]
 [ext_resource type="Script" uid="uid://cpptk5xdsgp4o" path="res://Scripts/UICorners.gd" id="5_uey14"]
+[ext_resource type="FontFile" uid="uid://brnloiunq5yiv" path="res://Sprites/reffspixelfont_spritesheet_0_to_1023.png" id="7_8kc7d"]
 [ext_resource type="Script" uid="uid://buyi45kj36cp8" path="res://Scripts/ScoreText.gd" id="7_uey14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iu14u"]
@@ -28,7 +29,12 @@ texture = ExtResource("5_iu14u")
 [sub_resource type="TileSet" id="TileSet_uey14"]
 sources/0 = SubResource("TileSetAtlasSource_iu14u")
 
+[sub_resource type="FontVariation" id="FontVariation_s75lh"]
+base_font = ExtResource("7_8kc7d")
+spacing_glyph = -6
+
 [sub_resource type="LabelSettings" id="LabelSettings_uey14"]
+font = SubResource("FontVariation_s75lh")
 
 [node name="Camera2D" type="Camera2D"]
 z_index = -5
@@ -69,10 +75,10 @@ z_index = 10
 
 [node name="ScoreText" type="Label" parent="UI/BottomLeft"]
 offset_left = 3.0
-offset_top = -26.0
-offset_right = 81.0
-offset_bottom = -3.0
-text = "Score: xxx"
+offset_top = -20.0
+offset_right = 84.0
+offset_bottom = 3.0
+text = "Score:xxx"
 label_settings = SubResource("LabelSettings_uey14")
 vertical_alignment = 1
 script = ExtResource("7_uey14")

@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 			lerpscore += 1
 		else:
 			lerpscore -= 1
-	text = "Score: "+str(lerpscore)
+	text = "Skor:"+str(lerpscore)
