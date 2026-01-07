@@ -118,6 +118,7 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="Door" type="StaticBody2D"]
+z_index = -1
 z_as_relative = false
 script = ExtResource("2_mw28t")
 

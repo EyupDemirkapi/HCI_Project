@@ -5,10 +5,11 @@ extends StaticBody2D
 @onready var interior = $/root/Game/Modulate/InteriorTileMap
 @onready var player = $/root/Game/Modulate/Player
 @onready var sprite = $AnimatedSprite2D
-var isInterior = true
+static var isInterior = true
 var turned = false
 
 func _ready() -> void:
+	isInterior = true
 	interior.modulate.a = 1
 	exterior.modulate.a = 0
 
